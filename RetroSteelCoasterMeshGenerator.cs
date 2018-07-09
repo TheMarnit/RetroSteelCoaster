@@ -38,38 +38,13 @@ public class RetroSteelCoasterMeshGenerator : MeshGenerator
 
     public override void prepare(TrackSegment4 trackSegment, GameObject putMeshOnGO)
     {
-        if (trackSegment.track.TrackedRide.everyUpIsLift)
-        {
-            Vector3 endpoint = trackSegment.getEndpoint();
-            float y = endpoint.y;
-            Vector3 startpoint = trackSegment.getStartpoint();
-            if (y - startpoint.y > 0.1f)
-            {
-                trackSegment.isLifthill = true;
-            }
-        }
+        base.prepare(trackSegment, putMeshOnGO);
+
         liftExtruder = null;
         
         if (trackSegment.isLifthill && (trackSegment is ChangeHeight4 || trackSegment.getStartpoint().y != trackSegment.getEndpoint().y || (UnityEngine.Object)frictionWheelsGO == (UnityEngine.Object)null))
         {
             liftExtruder = instantiateLiftExtruder(trackSegment);
-        }
-        lsmExtruder = null;
-        if (trackSegment.isLaunch)
-        {
-            lsmExtruder = instantiateLSMExtruder(trackSegment);
-        }
-        brakeExtruder = null;
-        if (useBrakeGraphics(trackSegment) && (trackSegment.isBrake() || trackSegment is Station))
-        {
-            Vector3 normal = trackSegment.getNormal(0f);
-            Vector3 trackPivot = getTrackPivot(trackSegment.getPoint(0f, 0), normal);
-            Vector3 tangentPoint = trackSegment.getTangentPoint(0f);
-            brakeExtruder = new BrakeExtruder(trackPivot, tangentPoint, normal);
-        }
-        if ((UnityEngine.Object)tunnelMeshGenerator != (UnityEngine.Object)null)
-        {
-            tunnelMeshGenerator.prepare(trackSegment);
         }
 
         putMeshOnGO.GetComponent<Renderer>().sharedMaterial = base.material;

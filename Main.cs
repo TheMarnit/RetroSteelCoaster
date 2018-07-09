@@ -26,19 +26,23 @@ namespace RetroSteelCoaster
 
             retroSteelCoaster.canCurveLifts = true;
             retroSteelCoaster.canHaveLSM = false;
-            retroSteelCoaster.description = "A classic steel rollercoaster.";
+            retroSteelCoaster.description = "Similar to the modern steel rollercoaster, this coaster is capable of having a curved lifthill but not of being launched.";
             retroSteelCoasterTrackGenerator.crossBeamGO = null;
 
             retroSteelCoaster.price = 1500;
+            retroSteelCoaster.trackPricePerUnit = 25;
             retroSteelCoaster.meshGenerator.customColors = new[]
             {
                 new Color (0f / 255f, 0f / 255f, 0f / 255f, 1), new Color (80f / 255f, 115f / 255f, 150f / 255f, 1),
                 new Color (110f / 255f, 170f / 255f, 255f / 255f, 1), new Color (95f / 255f, 140f / 255f, 200f / 255f, 1)
             };
-            retroSteelCoaster.dropsImportanceExcitement = 0.665f;
-            retroSteelCoaster.inversionsImportanceExcitement = 0.673f;
-            retroSteelCoaster.averageLatGImportanceExcitement = 0.121f;
-            retroSteelCoaster.accelerationImportanceExcitement = 0.525f;
+            retroSteelCoaster.airtimeImportanceExcitement = TrackRideHelper.GetTrackedRide("Steel Coaster").airtimeImportanceExcitement + 0.2f;
+            retroSteelCoaster.dropsImportanceExcitement = TrackRideHelper.GetTrackedRide("Steel Coaster").dropsImportanceExcitement - 0.4f;
+            retroSteelCoaster.inversionsImportanceExcitement = TrackRideHelper.GetTrackedRide("Steel Coaster").inversionsImportanceExcitement - 0.1f;
+            retroSteelCoaster.averageLatGImportanceExcitement = TrackRideHelper.GetTrackedRide("Steel Coaster").averageLatGImportanceExcitement - 0.3f;
+            retroSteelCoaster.accelerationImportanceExcitement = TrackRideHelper.GetTrackedRide("Steel Coaster").accelerationImportanceExcitement + 0.1f;
+            retroSteelCoaster.velocityImportanceExcitement = TrackRideHelper.GetTrackedRide("Steel Coaster").velocityImportanceExcitement + 0.2f;
+            retroSteelCoaster.excitementImportanceRideLengthTime = TrackRideHelper.GetTrackedRide("Steel Coaster").excitementImportanceRideLengthTime + 0.15f;
             binder.Apply();
         }
 
@@ -49,7 +53,7 @@ namespace RetroSteelCoaster
 
         public string Name => "Retro Steel Coaster";
 
-        public string Description => "Adds a retro steel coaster.";
+        public string Description => "Adds a retro steel coaster that is capable of having a curved lifthill but not of being launched";
 
         string IMod.Identifier => "Marnit@ParkitectRetroSteelCoaster";
 
