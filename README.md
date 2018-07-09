@@ -1,5 +1,5 @@
-# Hybrid Coaster Mod
+# Retro Steel Coaster Mod
 
-Adds fancy RCM's to the Parkitect Game.
+Adds a retro steel coaster to Parkitect.
 
-Made by Marnit, Quexten, MPollend, H-Pops & Casual_Dutchman
+Made by Marnit, MPollend, H-Pops & Casual_Dutchman
