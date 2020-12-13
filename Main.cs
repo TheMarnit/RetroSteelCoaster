@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace RetroSteelCoaster
 {
-    public class Main : IMod
+    public class Main : AbstractMod
     {
         private TrackRiderBinder binder;
 
         GameObject _go;
 
-        public void onEnabled()
+        public override void onEnabled()
         {
             var dsc = System.IO.Path.DirectorySeparatorChar;
 
@@ -46,17 +46,40 @@ namespace RetroSteelCoaster
             binder.Apply();
         }
 
-        public void onDisabled()
+        public override void onDisabled()
         {
             binder.Unload();
         }
 
-        public string Name => "Retro Steel Coaster";
+        public override string getName()
+        {
+            return "Retro Steel Coaster";
+        }
 
-        public string Description => "Adds a retro steel coaster that is capable of having a curved lifthill but not of being launched";
+        public override string getDescription()
+        {
+            return "Adds a retro steel coaster that is capable of having a curved lifthill but not of being launched";
+        }
 
-        string IMod.Identifier => "Marnit@ParkitectRetroSteelCoaster";
+        public override string getIdentifier()
+        {
+            return "Marnit@ParkitectRetroSteelCoaster";
+        }
 
+        public override string getVersionNumber()
+        {
+            return "1.2.0";
+        }
+
+        public override bool isMultiplayerModeCompatible()
+        {
+            return true;
+        }
+
+        public override int getOrderPriority()
+        {
+            return 99;
+        }
 
         public string Path
         {
