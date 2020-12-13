@@ -87,7 +87,7 @@ public class RetroSteelCoasterMeshGenerator : MeshGenerator
         Vector3 middlePoint = trackPivot + normalized * base.trackWidth / 2f;
         Vector3 middlePoint2 = trackPivot - normalized * base.trackWidth / 2f;
         Vector3 vector = trackPivot + normal * getCenterPointOffsetY();
-        if (trackSegment is Station || trackSegment is Brake || (trackSegment.isLifthill && liftExtruder1 == null))
+        if (trackSegment is Station || trackSegment is Brake || (trackSegment.isLifthill && liftExtruder1 == null) || trackSegment is Loop4)
         {
             centerBoxExtruder.extrude(trackPivot + normal * base.trackWidth / 3f, tangentPoint, normal);
         }
@@ -119,7 +119,7 @@ public class RetroSteelCoasterMeshGenerator : MeshGenerator
             Vector3 binormal = Vector3.Cross(normal, tangentPoint).normalized;
             Vector3 trackPivot = base.getTrackPivot(trackSegment.getPoint(tForDistance, 0), normal);
 
-            if (trackSegment is Station || trackSegment is Brake || (trackSegment.isLifthill && liftExtruder1 == null))
+            if (trackSegment is Station || trackSegment is Brake || (trackSegment.isLifthill && liftExtruder1 == null) || trackSegment is Loop4)
             {
                 crossBoxExtruder.setHeight(sideTubesRadius);
                 crossBoxExtruder.extrude((trackPivot - binormal * base.trackWidth / 2f) + (normal * sideTubesRadius * 0.5f), binormal, normal);
