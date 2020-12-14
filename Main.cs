@@ -68,7 +68,7 @@ namespace RetroSteelCoaster
 
         public override string getVersionNumber()
         {
-            return "1.2.0";
+            return "1.2.3";
         }
 
         public override bool isMultiplayerModeCompatible()
