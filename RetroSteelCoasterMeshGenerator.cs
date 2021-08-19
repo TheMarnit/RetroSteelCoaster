@@ -150,7 +150,7 @@ public class RetroSteelCoasterMeshGenerator : MeshGenerator
                 sideCrossTubeExtruder.end();
             }
         }
-        if (trackSegment is Loop4)
+        if (trackSegment is Loop4 && !trackSegment.isPreview)
         {
             centerBoxExtruder.end();
             float tForDistance = trackSegment.getTForDistance(trackSegment.getLength(0) * 0.34f, 0);
