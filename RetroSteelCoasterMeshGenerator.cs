@@ -175,11 +175,6 @@ public class RetroSteelCoasterMeshGenerator : MeshGenerator
         if (liftExtruder1 != null)
         {
             GameObject gameObject = new GameObject("ChainLift1");
-            if ((UnityEngine.Object)trackSegment.track != (UnityEngine.Object)null)
-            {
-                ChainLiftAnimator chainLiftAnimator = gameObject.AddComponent<ChainLiftAnimator>();
-                chainLiftAnimator.setTrackedRide(trackSegment.track.TrackedRide);
-            }
             MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
             meshRenderer.shadowCastingMode = ShadowCastingMode.Off;
             meshRenderer.sharedMaterials = getLiftMaterials();
@@ -189,6 +184,12 @@ public class RetroSteelCoasterMeshGenerator : MeshGenerator
             gameObject.transform.parent = putMeshOnGO.transform;
             gameObject.transform.localPosition = Vector3.zero;
             gameObject.transform.localRotation = Quaternion.identity;
+            if ((UnityEngine.Object)trackSegment.track != (UnityEngine.Object)null)
+            {
+                ChainLiftAnimator chainLiftAnimator = gameObject.AddComponent<ChainLiftAnimator>();
+                chainLiftAnimator.setTrackedRide(trackSegment.track.TrackedRide);
+                chainLiftAnimator.Initialize();
+            }
         }
     }
 
